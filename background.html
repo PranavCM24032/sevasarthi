@@ -1,0 +1,60 @@
+<style>
+    .bg-main {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+        background-color: #0f172a;
+        /* Slate 900 */
+        background-image:
+            radial-gradient(at 0% 0%, rgba(6, 95, 70, 0.3) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(15, 23, 42, 1) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(2, 44, 34, 0.4) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(15, 23, 42, 1) 0px, transparent 50%);
+        overflow: hidden;
+    }
+
+    /* Subtle grid overlay for premium texture */
+    .bg-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .bg-ambient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(15, 23, 42, 0.8) 100%);
+        animation: pulseAmbient 15s ease-in-out infinite alternate;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    @keyframes pulseAmbient {
+        0% {
+            opacity: 0.8;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="bg-main">
+    <div class="bg-ambient"></div>
+</div>
+<div class="bg-grid"></div>

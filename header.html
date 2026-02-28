@@ -1,0 +1,701 @@
+<style>
+    .nav-link {
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        position: relative;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        font-size: 0.875rem;
+    }
+
+    @media (min-width: 640px) {
+        .nav-link {
+            padding: 8px 12px;
+            font-size: 1rem;
+        }
+    }
+
+    .nav-link:hover {
+        background: rgba(168, 230, 207, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+        background: rgba(168, 230, 207, 0.15);
+        color: white;
+        font-weight: 600;
+        border: 1px solid rgba(76, 175, 80, 0.3);
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+    }
+
+    .nav-link.active .material-icons {
+        transform: scale(1.05);
+    }
+
+    /* Active link border colors unified for commercial clean look */
+    .nav-link.active {
+        border-color: rgba(16, 185, 129, 0.6) !important;
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.3) !important;
+        background: rgba(16, 185, 129, 0.15) !important;
+        color: #34d399 !important;
+    }
+
+    /* Custom breakpoint for extra small screens */
+    @media (min-width: 475px) {
+        .xs\:inline {
+            display: inline !important;
+        }
+
+        .xs\:hidden {
+            display: none !important;
+        }
+    }
+
+    /* Compact header specific styles */
+    .compact-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    @media (min-width: 640px) {
+        .compact-logo {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    .compact-user-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    @media (min-width: 640px) {
+        .compact-user-icon {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    /* Responsive Header Styles */
+    .responsive-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: linear-gradient(to right, #1f2937, #111827);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        background: #1f2937;
+    }
+
+    .mobile-menu.open {
+        max-height: 400px;
+    }
+
+    .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #d1d5db;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .mobile-nav-link:hover {
+        background: rgba(168, 230, 207, 0.1);
+        color: white;
+        border-left-color: currentColor;
+    }
+
+    .mobile-nav-link.active {
+        background: rgba(168, 230, 207, 0.15);
+        color: white;
+        font-weight: 600;
+        border-left-color: currentColor;
+    }
+
+    /* Hide desktop nav on mobile */
+    @media (max-width: 768px) {
+        .desktop-nav {
+            display: none !important;
+        }
+
+        .mobile-menu-btn {
+            display: flex !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .mobile-menu-btn {
+            display: none !important;
+        }
+
+        .mobile-menu {
+            display: none !important;
+        }
+    }
+
+    /* Scrollable navigation for tablets */
+    @media (max-width: 1024px) and (min-width: 769px) {
+        .nav-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    }
+</style>
+
+<!-- Responsive Fixed Header -->
+<header class="responsive-header">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <!-- Main Header Row -->
+        <div class="flex justify-between items-center py-3">
+            <!-- Logo and Brand Section -->
+            <div class="flex items-center space-x-2 flex-shrink-0">
+                <img src="logo.png" alt="सेवा सारथी लोगो" class="compact-logo object-contain">
+                <div class="hidden sm:block">
+                    <h1 class="text-lg md:text-xl font-bold text-white">सेवा सारथी</h1>
+                    <p class="text-xs text-gray-300">शेतकऱ्यांचा डिजिटल साथीदार</p>
+                </div>
+                <div class="sm:hidden">
+                    <h1 class="text-base font-bold text-white">सेवा सारथी</h1>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav flex items-center">
+                <div class="flex flex-wrap gap-1 md:gap-1.5 justify-center nav-scroll">
+                    <a href="home.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="home">
+                        <span
+                            class="material-icons text-green-300 group-hover:scale-105 transition-transform text-base md:text-lg">home</span>
+                        <span class="hidden xs:inline">होम</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="weather.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="weather">
+                        <span
+                            class="material-icons text-yellow-300 group-hover:scale-105 transition-transform text-base md:text-lg">wb_sunny</span>
+                        <span class="hidden xs:inline">हवामान</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="market.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="market">
+                        <span
+                            class="material-icons text-red-300 group-hover:scale-105 transition-transform text-base md:text-lg">trending_up</span>
+                        <span class="hidden sm:inline">बाजार भाव</span>
+                        <span class="sm:hidden">बाजार</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="soil.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="soil">
+                        <span
+                            class="material-icons text-orange-300 group-hover:scale-105 transition-transform text-base md:text-lg">science</span>
+                        <span class="hidden sm:inline">माती तपासणी</span>
+                        <span class="sm:hidden">माती</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="schemes.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="schemes">
+                        <span
+                            class="material-icons text-purple-300 group-hover:scale-105 transition-transform text-base md:text-lg">description</span>
+                        <span class="hidden sm:inline">सरकारी योजना</span>
+                        <span class="sm:hidden">योजना</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="crop.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="crop">
+                        <span
+                            class="material-icons text-green-300 group-hover:scale-105 transition-transform text-base md:text-lg">eco</span>
+                        <span class="hidden sm:inline">पीक व्यवस्थापन</span>
+                        <span class="sm:hidden">पीक</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                    <a href="chatbot.html"
+                        class="nav-link flex items-center space-x-1 text-gray-300 hover:text-white transition-all duration-300 relative group"
+                        data-tab="chatbot">
+                        <span
+                            class="material-icons text-indigo-300 group-hover:scale-105 transition-transform text-base md:text-lg">smart_toy</span>
+                        <span class="hidden xs:inline">AI</span>
+                        <span class="xs:hidden">AI</span>
+                        <div
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full">
+                        </div>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Auth/Profile Section -->
+            <div class="hidden sm:flex items-center space-x-3 ml-2">
+                <button id="headerLoginBtn"
+                    class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg flex items-center gap-1">
+                    <span class="material-icons text-[18px]">account_circle</span>
+                    <span id="headerAuthText">लॉग इन</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button (Moved from earlier for better layout if exists) -->
+            <button id="mobileMenuButton"
+                class="sm:hidden text-white hover:text-green-400 focus:outline-none p-1 ml-auto">
+                <span class="material-icons text-2xl">menu</span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-menu border-t border-gray-800" id="mobileMenu">
+            <div class="py-2">
+                <a href="home.html" class="mobile-nav-link" data-tab="home">
+                    <span class="material-icons text-green-300">home</span>
+                    <span>होम</span>
+                </a>
+                <a href="weather.html" class="mobile-nav-link" data-tab="weather">
+                    <span class="material-icons text-yellow-300">wb_sunny</span>
+                    <span>हवामान</span>
+                </a>
+                <a href="market.html" class="mobile-nav-link" data-tab="market">
+                    <span class="material-icons text-red-300">trending_up</span>
+                    <span>बाजार भाव</span>
+                </a>
+                <a href="soil.html" class="mobile-nav-link" data-tab="soil">
+                    <span class="material-icons text-orange-300">science</span>
+                    <span>माती तपासणी</span>
+                </a>
+                <a href="schemes.html" class="mobile-nav-link" data-tab="schemes">
+                    <span class="material-icons text-purple-300">description</span>
+                    <span>सरकारी योजना</span>
+                </a>
+                <a href="crop.html" class="mobile-nav-link" data-tab="crop">
+                    <span class="material-icons text-green-300">eco</span>
+                    <span>पीक व्यवस्थापन</span>
+                </a>
+                <a href="chatbot.html" class="mobile-nav-link" data-tab="chatbot">
+                    <span class="material-icons text-indigo-300">smart_toy</span>
+                    <span>AI सहाय्यक</span>
+                </a>
+
+                <div class="border-t border-gray-800 mt-2 pt-2 pb-2 px-4">
+                    <button id="mobileLoginBtn"
+                        class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow flex items-center justify-center gap-2">
+                        <span class="material-icons text-[20px]">account_circle</span>
+                        <span id="mobileAuthText">लॉग इन / नोंदणी करा</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Add padding to body to account for fixed header -->
+<div style="height: 80px;"></div>
+
+<!-- Auth Modal (Hidden by default) -->
+<div id="authModal"
+    class="hidden fixed inset-0 z-[2000] flex justify-center items-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity">
+    <div class="bg-gray-800 rounded-2xl w-full max-w-md mx-4 overflow-hidden shadow-2xl border border-gray-800 transform transition-transform scale-95 origin-center"
+        id="authModalContent">
+        <!-- Modal Header -->
+        <div class="relative bg-gradient-to-r from-green-600 to-green-800 p-6 text-center">
+            <button id="closeAuthModal"
+                class="absolute top-4 right-4 text-white hover:text-gray-200 focus:outline-none">
+                <span class="material-icons">close</span>
+            </button>
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <span class="material-icons text-green-600 text-3xl">agriculture</span>
+            </div>
+            <h2 id="modalTitle" class="text-2xl font-bold text-white">लॉग इन करा</h2>
+            <p id="modalSubtitle" class="text-green-100 text-sm mt-1">शेतकरी समुदायात आपले स्वागत आहे</p>
+        </div>
+
+        <!-- Forms Container -->
+        <div class="p-6">
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">मोबाईल क्रमांक</label>
+                    <div class="relative">
+                        <span
+                            class="absolute left-3 top-2.5 text-gray-400 material-icons text-[20px]">phone_iphone</span>
+                        <input type="tel" id="loginPhone"
+                            class="w-full bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all"
+                            placeholder="उदा. 9876543210" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">पासवर्ड</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 text-gray-400 material-icons text-[20px]">lock</span>
+                        <input type="password" id="loginPassword"
+                            class="w-full bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all"
+                            placeholder="तुमचा पासवर्ड टाका" required>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg shadow-md transition-colors mt-2">लॉग
+                    इन</button>
+            </form>
+
+            <!-- Signup Form (Hidden initially) -->
+            <form id="signupForm" class="hidden space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">पूर्ण नाव</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 text-gray-400 material-icons text-[20px]">person</span>
+                        <input type="text" id="signupName"
+                            class="w-full bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all"
+                            placeholder="तुमचे नाव" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">मोबाईल क्रमांक</label>
+                    <div class="relative">
+                        <span
+                            class="absolute left-3 top-2.5 text-gray-400 material-icons text-[20px]">phone_iphone</span>
+                        <input type="tel" id="signupPhone"
+                            class="w-full bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all"
+                            placeholder="उदा. 9876543210" required>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">पासवर्ड</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-2.5 text-gray-400 material-icons text-[20px]">lock</span>
+                        <input type="password" id="signupPassword"
+                            class="w-full bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg border border-gray-600 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition-all"
+                            placeholder="पासवर्ड तयार करा" required>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 rounded-lg shadow-md transition-colors mt-2">खाते
+                    काढा</button>
+            </form>
+
+            <div class="mt-6 text-center text-sm text-gray-400">
+                <p id="toggleAuthText">नवीन आहात? <button id="toggleAuthBtn"
+                        class="text-green-400 hover:text-green-300 font-semibold focus:outline-none">खाते तयार
+                        करा</button></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Active Tab Management
+    (function initHeader() {
+        console.log('🚀 Initializing responsive navigation...');
+
+        function getCurrentPage() {
+            const pathname = window.location.pathname;
+            let currentPage = pathname.split('/').pop();
+
+            if (!currentPage || currentPage === '') {
+                currentPage = 'home.html';
+            }
+
+            if (!currentPage.endsWith('.html')) {
+                currentPage += '.html';
+            }
+
+            console.log('📄 Detected current page:', currentPage);
+            return currentPage;
+        }
+
+        function setActiveTab() {
+            const currentPage = getCurrentPage();
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+            console.log('🔄 Setting active tab for:', currentPage);
+
+            let activeSet = false;
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                    activeSet = true;
+                    console.log('✅ Active tab set to:', linkHref);
+                }
+            });
+
+            if (!activeSet) {
+                const homeLink = document.querySelector('a[href="home.html"]');
+                if (homeLink) {
+                    homeLink.classList.add('active');
+                    console.log('🏠 Defaulting to home.html');
+                }
+            }
+        }
+
+        // Mobile Menu Functionality
+        function setupMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('open');
+
+                    // Change icon based on menu state
+                    const icon = mobileMenuButton.querySelector('.material-icons');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.textContent = 'close';
+                    } else {
+                        icon.textContent = 'menu';
+                    }
+                });
+            }
+        }
+
+        function setupHoverEffects() {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    if (!this.classList.contains('active')) {
+                        const underline = this.querySelector('div');
+                        if (underline) {
+                            underline.style.width = '100%';
+                        }
+                    }
+                });
+
+                link.addEventListener('mouseleave', function () {
+                    if (!this.classList.contains('active')) {
+                        const underline = this.querySelector('div');
+                        if (underline) {
+                            underline.style.width = '0%';
+                        }
+                    }
+                });
+            });
+        }
+
+        function initializeNavigation() {
+            setActiveTab();
+            setupMobileMenu();
+            setupHoverEffects();
+
+            setTimeout(setActiveTab, 100);
+        }
+
+        initializeNavigation();
+
+        window.addEventListener('popstate', setActiveTab);
+    })();
+
+    function forceRefreshActiveTab() {
+        const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+        const currentPage = window.location.pathname.split('/').pop() || 'home.html';
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+        console.log('🔄 Forced active tab refresh for:', currentPage);
+    }
+
+    // Ensure header stays fixed on scroll
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.responsive-header');
+        if (header) {
+            header.style.transform = 'translateY(0)';
+        }
+    });
+
+    // --- Authentication Logic ---
+    function initAuth() {
+        const authModal = document.getElementById('authModal');
+        const authModalContent = document.getElementById('authModalContent');
+        const headerLoginBtn = document.getElementById('headerLoginBtn');
+        const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        let toggleAuthBtn = document.getElementById('toggleAuthBtn');
+
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const toggleAuthText = document.getElementById('toggleAuthText');
+
+        const headerAuthText = document.getElementById('headerAuthText');
+        const mobileAuthText = document.getElementById('mobileAuthText');
+
+        let isLoginMode = true;
+
+        // Check if user is logged in
+        function updateAuthUI() {
+            const user = JSON.parse(localStorage.getItem('sevaSarthiUser'));
+            if (user) {
+                // User is logged in
+                if (headerAuthText) headerAuthText.textContent = user.name;
+                if (mobileAuthText) mobileAuthText.textContent = 'लॉग आउट (' + user.name + ')';
+
+                // Change icons for logout
+                if (headerLoginBtn) {
+                    headerLoginBtn.classList.remove('from-green-500', 'to-green-600');
+                    headerLoginBtn.classList.add('from-red-500', 'to-red-600');
+                }
+                if (mobileLoginBtn) {
+                    mobileLoginBtn.classList.remove('from-green-500', 'to-green-600');
+                    mobileLoginBtn.classList.add('from-red-500', 'to-red-600');
+                    const mIcon = mobileLoginBtn.querySelector('span.material-icons');
+                    if (mIcon) mIcon.textContent = 'logout';
+                }
+            } else {
+                // Logged out
+                if (headerAuthText) headerAuthText.textContent = 'लॉग इन';
+                if (mobileAuthText) mobileAuthText.textContent = 'लॉग इन / नोंदणी करा';
+
+                if (headerLoginBtn) {
+                    headerLoginBtn.classList.remove('from-red-500', 'to-red-600');
+                    headerLoginBtn.classList.add('from-green-500', 'to-green-600');
+                }
+                if (mobileLoginBtn) {
+                    mobileLoginBtn.classList.remove('from-red-500', 'to-red-600');
+                    mobileLoginBtn.classList.add('from-green-500', 'to-green-600');
+                    const mIcon = mobileLoginBtn.querySelector('span.material-icons');
+                    if (mIcon) mIcon.textContent = 'account_circle';
+                }
+            }
+        }
+
+        // Open Modal
+        function openModal() {
+            const user = JSON.parse(localStorage.getItem('sevaSarthiUser'));
+            if (user) {
+                // Handle Logout
+                if (confirm('तुम्हाला लॉग आउट करायचे आहे का?')) {
+                    localStorage.removeItem('sevaSarthiUser');
+                    updateAuthUI();
+                    alert('यशस्वीरित्या लॉग आउट केले!');
+                }
+                return;
+            }
+            if (authModal) {
+                authModal.classList.remove('hidden');
+                setTimeout(() => {
+                    authModalContent.classList.remove('scale-95');
+                    authModalContent.classList.add('scale-100');
+                }, 10);
+            }
+        }
+
+        // Close Modal
+        function closeModal() {
+            if (authModalContent) {
+                authModalContent.classList.remove('scale-100');
+                authModalContent.classList.add('scale-95');
+            }
+            if (authModal) {
+                setTimeout(() => {
+                    authModal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Toggle Login / Signup Mode
+        function toggleMode() {
+            isLoginMode = !isLoginMode;
+            if (isLoginMode) {
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                modalTitle.textContent = 'लॉग इन करा';
+                modalSubtitle.textContent = 'शेतकरी समुदायात आपले स्वागत आहे';
+                toggleAuthText.innerHTML = 'नवीन आहात? <button id="toggleAuthBtn" type="button" class="text-green-400 hover:text-green-300 font-semibold focus:outline-none">खाते तयार करा</button>';
+            } else {
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                modalTitle.textContent = 'खाते तयार करा';
+                modalSubtitle.textContent = 'नवीन शेतकरी खाते उघडा';
+                toggleAuthText.innerHTML = 'आधीच खाते आहे? <button id="toggleAuthBtn" type="button" class="text-green-400 hover:text-blue-300 font-semibold focus:outline-none">लॉग इन करा</button>';
+            }
+            // re-bind listener because innerHTML changed
+            toggleAuthBtn = document.getElementById('toggleAuthBtn');
+            if (toggleAuthBtn) toggleAuthBtn.addEventListener('click', toggleMode);
+        }
+
+        if (headerLoginBtn) headerLoginBtn.addEventListener('click', openModal);
+        if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) mobileMenu.classList.remove('open');
+            openModal();
+        });
+        if (closeAuthModal) closeAuthModal.addEventListener('click', closeModal);
+        if (toggleAuthBtn) toggleAuthBtn.addEventListener('click', toggleMode);
+
+        // Login Submit
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const phone = document.getElementById('loginPhone').value;
+                // Fake auth
+                localStorage.setItem('sevaSarthiUser', JSON.stringify({ name: 'शेतकरी मित्र', phone: phone }));
+                updateAuthUI();
+                closeModal();
+                loginForm.reset();
+                window.dispatchEvent(new Event('userLogin'));
+            });
+        }
+
+        // Signup Submit
+        if (signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('signupName').value;
+                const phone = document.getElementById('signupPhone').value;
+                // Fake signup
+                localStorage.setItem('sevaSarthiUser', JSON.stringify({ name: name, phone: phone }));
+                updateAuthUI();
+                closeModal();
+                signupForm.reset();
+                window.dispatchEvent(new Event('userLogin'));
+            });
+        }
+
+        updateAuthUI();
+    }
+
+    // Initialize auth immediately
+    initAuth();
+
+    // In case the elements aren't immediately available, retry after slightly
+    setTimeout(initAuth, 200);
+</script>
